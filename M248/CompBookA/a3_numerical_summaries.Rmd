@@ -1,0 +1,33 @@
+---
+title: "Numerical summaries"
+Date: 2021-01-25
+output:
+  md_document:
+    variant: gfm
+---
+
+## About
+
+```{r echo=FALSE}
+#import the tidyverse
+library(tidyverse)
+```
+
+## Summarising the data
+
+Load the data using `read.csv()`.
+
+```{r}
+# import the data
+response <- read.csv(file = "../data/response-inhibition.csv"); head(response)
+```
+
+```{r}
+weight_change <- response$Weight.change
+summarise(weight_change)
+```
+
+
+## References
+
+- Activities 14, 15 **(M248 Computer Book A)**

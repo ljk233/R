@@ -1,0 +1,70 @@
+---
+title: "Frequency histograms"
+date: 2021-01-26
+output:
+  md_document:
+    variant: gfm
+---
+
+## About
+
+```{r include=FALSE}
+library(tidyverse)
+```
+
+## Frequency histograms
+
+Load the data with `read.csv`
+
+```{r}
+# import the data
+membership <- read.csv(file = "../data/membership.csv"); head(membership)
+```
+
+Plot a frequency histogram using `geom_histogram`.
+
+```{r}
+ggplot(data = membership) +
+  geom_histogram(
+    mapping = aes(x = Percentage),
+    color = "darkblue",
+    fill = "lightblue",
+    boundary = 0) +  # Bin position specifiers
+  scale_x_continuous(
+    breaks = seq(16, 30, 2)) +
+  labs(
+    title = "Frequency Histogram of Membership",
+    y = "Frequency")
+```
+
+We can alter the number of bins by using the `binwidth=` parameter.
+
+```{r}
+ggplot(data = membership) +
+  geom_histogram(
+    mapping = aes(x = Percentage),
+    color = "darkblue",
+    fill = "lightblue",
+    boundary = 0,  # Bin position specifiers
+    binwidth = 1) +  # set the bin width
+  scale_x_continuous(
+    breaks = seq(16, 30, 2)) +
+  labs(
+    title = "Frequency Histogram of Membership",
+    y = "Frequency")
+```
+
+## Relative frequency histograms
+
+Plot a default histogram using `ggplot + geom_histogram`, specifying the parameter `y=..density..`.
+
+```{r}
+ggplot(data = membership) +
+  geom_histogram(mapping = aes(x = Percentage, y=..density..))
+```
+
+## References
+
+- Activities 8, 9 **(M248 Computer Book A)**
+- [Histograms and frequency polygons](https://ggplot2.tidyverse.org/reference/geom_histogram.html) **(ggplot2 documentation)**
+- [Basic visualization](https://www.sfu.ca/~mjbrydon/tutorials/BAinR/visualize.html#using-ggplot) **(Basic Analytics in R)**

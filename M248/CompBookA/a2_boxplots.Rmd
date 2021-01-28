@@ -1,0 +1,55 @@
+---
+title: "Boxplots"
+Date: 2021-01-25
+output:
+  md_document:
+    variant: gfm
+---
+
+## About
+
+```{r echo=FALSE}
+#import the tidyverse
+library(tidyverse)
+```
+
+## Boxplots
+
+Load the data using `read.csv()`.
+
+```{r}
+# import the data
+membership <- read.csv(file = "../data/membership.csv");
+head(membership)
+```
+
+Plot a boxplot by using `geom_boxplot()` function.
+Whether the boxplot is horizontal or vertical depends on what parameter we set in the mapping parameter.
+
+### Horizontal boxplot
+
+```{r}
+ggplot(data = membership) +
+  geom_boxplot(
+    mapping = aes(x = Percentage)) +
+  labs(
+    title = "Boxplot of Membership"
+  )
+```
+
+### Vertical boxplot
+
+Plot a default vertical boxplot by using `geom_boxplot()`, setting `aes(y)`.
+
+```{r}
+ggplot(data = membership) +
+  geom_boxplot(
+    mapping = aes(y = Percentage)) +
+  labs(
+    title = "Boxplot of Membership")
+```
+
+## References
+
+- Activities 8, 9 **(M248 Computer Book A)**
+- [A box and whiskers plot (in the style of Tukey)](https://ggplot2.tidyverse.org/reference/geom_boxplot.html?q=boxp) **(ggplot2 documentation)**
