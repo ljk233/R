@@ -8,7 +8,7 @@ output:
 
 ## About
 
-In this notebook, we
+In this notebook, we:
 
 - load the `tidyverse` using `library()`
 - load a `csv` file into a `data.frame` using `read.csv()`
@@ -80,8 +80,7 @@ ggplot(data = y) +
     mapping = aes(x = reorder(Occupation.type, -Total), y = Total),
     color = "darkblue",
     fill = "lightblue") +
-  labs(
-    title = "Total UK Workforce by Occupation Type",  # title of the plot
+  labs(title = "Total UK Workforce by Occupation Type",  # title of the plot
     x = "",  # Suppress the x-axis label
     y = "Frequency (millions)") +  # y-axis label
   theme(
